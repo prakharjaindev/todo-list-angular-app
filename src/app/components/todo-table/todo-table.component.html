@@ -1,0 +1,28 @@
+<div class="todo-actions">
+    <button (click)="onAddTodo()">Add Todo</button>
+  </div>
+  <table class="todo-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (todo of todos; track todo.id) {
+        <tr>
+          <td>{{ todo.id }}</td>
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.description | slice:0:50 }}...</td>
+          <td>{{ todo.status }}</td>
+          <td>
+            <button (click)="onEdit(todo)">Edit</button>
+            <button (click)="onDelete(todo.id)">Delete</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
